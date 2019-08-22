@@ -6,8 +6,68 @@
 <head>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 </head>
-
-<canvas id="doughnut-chart" width="800" height="450"></canvas>
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+            <br/>
+            <h4>Recent Purchase</h4>
+            <br/>
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">
+                        Purchase Title
+                    </th>
+                    <th scope="col">
+                        Price
+                    </th>
+                    <th scope="col">
+                        Category
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        Grocery
+                    </td>
+                    <td>
+                        $243
+                    </td>
+                    <td>
+                        Food
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Gas
+                    </td>
+                    <td>
+                        $30
+                    </td>
+                    <td>
+                        Automobile
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Electric Bill
+                    </td>
+                    <td>
+                        $60
+                    </td>
+                    <td>
+                        Utilities
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-8">
+            <canvas id="doughnut-chart" width="800" height="450"></canvas>
+        </div>
+    </div>
+</div>
 
 <script>
     new Chart(document.getElementById("doughnut-chart"), {
