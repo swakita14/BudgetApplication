@@ -3,13 +3,17 @@ using BudgetApplication.Data.Configurations;
 using BudgetApplication.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.Extensions.Configuration;
 
 namespace BudgetApplication.Data
 {
     public partial class BudgetAppContext : DbContext
     {
-        public BudgetAppContext()
+        private readonly IConfiguration _configuration;
+
+        public BudgetAppContext(IConfiguration configuration)
         {
+            _configuration = configuration;
         }
 
         public BudgetAppContext(DbContextOptions<BudgetAppContext> options)
@@ -24,7 +28,7 @@ namespace BudgetApplication.Data
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=BudgetApp;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer(_configuration.GetConnectionString("BudgetAppDatabase"));
             }
         }
 
