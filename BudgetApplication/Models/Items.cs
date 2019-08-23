@@ -1,21 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace BudgetApplication.Models
 {
-    public class Item
+    public partial class Items
     {
-
-        public int ItemID { get; set; }
-
+        public int ItemId { get; set; }
         public string Name { get; set; }
-
         public string Price { get; set; }
+        public int CategoryId { get; set; }
 
-        public int CategoryID { get; set; }
-
+        public virtual Categories Category { get; set; }
     }
-
 }
