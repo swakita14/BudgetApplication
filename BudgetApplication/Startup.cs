@@ -30,8 +30,10 @@ namespace BudgetApplication
             });
 
             // Registering context with dependency injection that .NET Core comes with pre-built-in
-            services.AddDbContext<BudgetContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            var connection =
+                @"Server=(localdb)\\mssqllocaldb;Database=BudgetApp;Trusted_Connection=True;ConnectRetryCount=0";
+            services.AddDbContext<BudgetAppContext>(options => options.UseSqlServer(connection));
+
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
