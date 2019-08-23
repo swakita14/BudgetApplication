@@ -1,8 +1,10 @@
 ﻿using System;
+using BudgetApplication.Data.Configurations;
+using BudgetApplication.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace BudgetApplication.Models
+namespace BudgetApplication.Data
 {
     public partial class BudgetAppContext : DbContext
     {
@@ -30,45 +32,10 @@ namespace BudgetApplication.Models
         {
             modelBuilder.HasAnnotation("ProductVersion", "2.2.4-servicing-10062");
 
-            modelBuilder.Entity<Categories>(entity =>
-            {
-                entity.HasKey(e => e.CategoryId)
-                    .HasName("PK_Category");
+            // Registering the separate configuration files 
+            modelBuilder.ApplyConfiguration(new ItemsConfiguration());
+            modelBuilder.ApplyConfiguration(new CategoriesConfiguration());
 
-                entity.Property(e => e.CategoryId).HasColumnName("CategoryID");
-
-                entity.Property(e => e.Color)
-                    .IsRequired()
-                    .HasMaxLength(32);
-
-                entity.Property(e => e.Name)
-                    .IsRequired()
-                    .HasMaxLength(32);
-            });
-
-            modelBuilder.Entity<Items>(entity =>
-            {
-                entity.HasKey(e => e.ItemId)
-                    .HasName("PK_Item");
-
-                entity.Property(e => e.ItemId).HasColumnName("ItemID");
-
-                entity.Property(e => e.CategoryId).HasColumnName("CategoryID");
-
-                entity.Property(e => e.Name)
-                    .IsRequired()
-                    .HasMaxLength(64);
-
-                entity.Property(e => e.Price)
-                    .IsRequired()
-                    .HasMaxLength(32);
-
-                entity.HasOne(d => d.Category)
-                    .WithMany(p => p.Items)
-                    .HasForeignKey(d => d.CategoryId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Category");
-            });
         }
     }
 }
