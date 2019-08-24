@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Threading.Tasks;
+using BudgetApplication.Interface.Repositories;
 using BudgetApplication.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace BudgetApplication.Data.Repositories
 {
-    public class ItemRepository
+    public class ItemRepository : IItemRepository
     {
         private readonly BudgetAppContext _context;
 
