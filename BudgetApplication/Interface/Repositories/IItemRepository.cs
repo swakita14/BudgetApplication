@@ -7,6 +7,8 @@ namespace BudgetApplication.Interface.Repositories
     {
         Item AddItem(Item item);
 
+        Item GetItemById(int id);
+
         Item GetItemByName(string name);
 
         IEnumerable<Item> GetItemsByCategory(Category category);
