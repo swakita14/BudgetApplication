@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace BudgetApplication.Data.Configurations
 {
-    public class ItemsConfiguration : IEntityTypeConfiguration<Items>
+    public class ItemsConfiguration : IEntityTypeConfiguration<Item>
     {
-        public void Configure(EntityTypeBuilder<Items> builder)
+        public void Configure(EntityTypeBuilder<Item> builder)
         {
             builder.HasKey(e => e.ItemId)
                 .HasName("PK_Item");

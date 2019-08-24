@@ -22,7 +22,7 @@ namespace BudgetApplication.Data
         }
 
         public virtual DbSet<Category> Categories { get; set; }
-        public virtual DbSet<Items> Items { get; set; }
+        public virtual DbSet<Item> Items { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
