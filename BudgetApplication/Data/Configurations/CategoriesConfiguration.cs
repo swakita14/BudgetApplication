@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace BudgetApplication.Data.Configurations
 {
-    public class CategoriesConfiguration : IEntityTypeConfiguration<Categories>
+    public class CategoriesConfiguration : IEntityTypeConfiguration<Category>
     {
-        public void Configure(EntityTypeBuilder<Categories> builder)
+        public void Configure(EntityTypeBuilder<Category> builder)
         {
             builder.HasKey(e => e.CategoryId)
                 .HasName("PK_Category");

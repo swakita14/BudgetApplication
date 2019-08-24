@@ -33,6 +33,7 @@ namespace BudgetApplication
             services.AddDbContext<BudgetAppContext>(options => options.UseSqlServer(Configuration.GetConnectionString("BudgetAppDatabase")));
 
 
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
