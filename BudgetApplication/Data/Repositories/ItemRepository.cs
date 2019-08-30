@@ -30,6 +30,14 @@ namespace BudgetApplication.Data.Repositories
         }
 
         /**
+         * Get item by the id (R)
+         */
+        public Item GetItemById(int id)
+        {
+            return _context.Items.Find(id);
+        }
+
+        /**
          * Get item using the name (R)
          */
         public Item GetItemByName(string name)
