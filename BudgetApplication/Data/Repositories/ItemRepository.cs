@@ -75,7 +75,7 @@ namespace BudgetApplication.Data.Repositories
          */
         public void DeleteItem(Item item)
         {
-            Item existingItem = _context.Items.Find(item.ItemId);
+            Item existingItem = GetItemById(item.ItemId);
             if (existingItem == null) throw new ArgumentException($"Could not find specified item by ID {item.ItemId}");
 
             _context.Items.Remove(existingItem);
