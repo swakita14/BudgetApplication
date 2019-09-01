@@ -1,5 +1,7 @@
 ﻿
 using BudgetApplication.Data;
+using BudgetApplication.Data.Repositories;
+using BudgetApplication.Interface.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -31,6 +33,10 @@ namespace BudgetApplication
 
             // Registering context with dependency injection that .NET Core comes with pre-built-in
             services.AddDbContext<BudgetAppContext>(options => options.UseSqlServer(Configuration.GetConnectionString("BudgetAppDatabase")));
+
+            // Registering application services 
+            services.AddTransient<IItemRepository, ItemRepository>();
+            services.AddTransient<ICategoryRepository, CategoryRepository>();
 
 
 

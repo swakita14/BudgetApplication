@@ -11,14 +11,10 @@ namespace BudgetApplication.Data
     {
         private readonly IConfiguration _configuration;
 
-        public BudgetAppContext(IConfiguration configuration)
-        {
-            _configuration = configuration;
-        }
-
-        public BudgetAppContext(DbContextOptions<BudgetAppContext> options)
+        public BudgetAppContext(DbContextOptions<BudgetAppContext> options, IConfiguration configuration)
             : base(options)
         {
+            _configuration = configuration;
         }
 
         public virtual DbSet<Category> Categories { get; set; }
