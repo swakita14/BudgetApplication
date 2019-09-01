@@ -18,13 +18,5 @@ namespace BudgetApplication.Controllers
             _categoryRepository = categoryRepository;
         }
 
-        public IActionResult IViewAllCategory()
-        {
-            List<Category> thisCategories = _categoryRepository.GetAllCategories();
-
-            Debug.Write(thisCategories);
-
-            return View();
-        }
     }
 }

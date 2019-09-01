@@ -12,10 +12,12 @@ namespace BudgetApplication.Controllers
     {
 
         private readonly IItemRepository _itemRepository;
+        private readonly ICategoryRepository _categoryRepository;
 
-        public ChartController(IItemRepository itemRepository)
+        public ChartController(IItemRepository itemRepository, ICategoryRepository categoryRepository)
         {
             _itemRepository = itemRepository;
+            _categoryRepository = categoryRepository;
         }
 
         public IActionResult Home()
