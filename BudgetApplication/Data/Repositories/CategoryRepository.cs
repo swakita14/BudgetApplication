@@ -42,11 +42,34 @@ namespace BudgetApplication.Data.Repositories
         }
 
         /**
+         * Getting all the category name (R)
+         */
+        public List<string> GetAllCategoryName()
+        {
+            List<string> categoryNames = new List<string>();
+
+            foreach (var category in GetAllCategories())
+            {
+                categoryNames.Add(category.Name);
+            }
+
+            return categoryNames;
+        }
+
+        /**
          * Getting category by ID (R)
          */
         public Category GetCategoryById(int categoryId)
         {
             return _context.Categories.Find(categoryId);
+        }
+
+        /**
+         * Getting the Category by its name
+         */
+        public Category GetCategoryByName(string categoryName)
+        {
+            return _context.Categories.FirstOrDefault(x => x.Name == categoryName);
         }
 
         /**

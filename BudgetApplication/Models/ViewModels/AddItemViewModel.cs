@@ -7,6 +7,8 @@ namespace BudgetApplication.Models.ViewModels
 {
     public class AddItemViewModel
     {
+        public int ItemId { get; set; }
+
         public string Name { get; set; }
 
         public string Price { get; set; }

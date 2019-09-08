@@ -10,7 +10,11 @@ namespace BudgetApplication.Interface.Repositories
 
         List<Category> GetAllCategories();
 
+        List<string> GetAllCategoryName();
+
         Category GetCategoryById(int categoryId);
+
+        Category GetCategoryByName(string categoryName);
 
         void EditCategory(Category category);
 

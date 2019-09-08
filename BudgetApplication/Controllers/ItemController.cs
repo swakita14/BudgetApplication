@@ -24,9 +24,8 @@ namespace BudgetApplication.Controllers
         [HttpGet]
         public IActionResult AddItem()
         {
-            List<Category> categories = _categoryRepository.GetAllCategories();
-
-            ViewBag.Category = new SelectList(_categoryRepository.GetAllCategories());
+            // Adding the dropdown to the view
+            CategoryDropDown();
 
             return View();
         }
@@ -34,9 +33,28 @@ namespace BudgetApplication.Controllers
         [HttpPost]
         public IActionResult AddItem(AddItemViewModel item)
         {
+            // Adding the dropdown to the view
+            CategoryDropDown();
 
+            // Creating New Item
+            Item newItem = new Item()
+            {
+                ItemId = item.ItemId,
+                Name = item.Name,
+                Price = item.Price,
+                Category = _categoryRepository.GetCategoryByName(item.Category),
+                CategoryId = _categoryRepository.GetCategoryByName(item.Category).CategoryId
+            };
 
-            return View();
+            // Adding Item to DB
+            _itemRepository.AddItem(newItem);
+
+            return RedirectToAction("AddItem");
+        }
+
+        public void CategoryDropDown()
+        {
+            ViewBag.Category = new SelectList(_categoryRepository.GetAllCategoryName());
         }
     }
 }
