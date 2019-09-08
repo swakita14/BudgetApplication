@@ -1,6 +1,7 @@
 ﻿using System;
 using BudgetApplication.Data.Configurations;
 using BudgetApplication.Models;
+using BudgetApplication.Models.DatabaseModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.Extensions.Configuration;

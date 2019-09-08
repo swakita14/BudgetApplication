@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using BudgetApplication.Models;
+using BudgetApplication.Models.DatabaseModels;
 
 namespace BudgetApplication.Interface.Repositories
 {

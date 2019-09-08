@@ -5,6 +5,7 @@ using System.Security.Policy;
 using System.Threading.Tasks;
 using BudgetApplication.Interface.Repositories;
 using BudgetApplication.Models;
+using BudgetApplication.Models.DatabaseModels;
 using Microsoft.EntityFrameworkCore;
 
 namespace BudgetApplication.Data.Repositories

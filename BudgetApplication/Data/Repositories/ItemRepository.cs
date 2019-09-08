@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using BudgetApplication.Interface.Repositories;
 using BudgetApplication.Models;
+using BudgetApplication.Models.DatabaseModels;
 using Microsoft.EntityFrameworkCore;
 
 namespace BudgetApplication.Data.Repositories

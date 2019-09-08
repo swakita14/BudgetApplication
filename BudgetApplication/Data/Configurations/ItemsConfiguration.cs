@@ -1,4 +1,5 @@
 ﻿using BudgetApplication.Models;
+using BudgetApplication.Models.DatabaseModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

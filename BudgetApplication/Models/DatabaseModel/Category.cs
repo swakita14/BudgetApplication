@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace BudgetApplication.Models
+namespace BudgetApplication.Models.DatabaseModels
 {
     public partial class Category
     {
