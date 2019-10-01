@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BudgetApplication.Data.Repositories;
 using BudgetApplication.Interface.Repositories;
+using BudgetApplication.Models.JSModel;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BudgetApplication.Controllers
@@ -18,6 +19,13 @@ namespace BudgetApplication.Controllers
         {
             _itemRepository = itemRepository;
             _categoryRepository = categoryRepository;
+        }
+
+        public IActionResult ChartView()
+        {
+            List<DataPoint> dataPoints = new List<DataPoint>();
+
+
         }
 
         public IActionResult Home()

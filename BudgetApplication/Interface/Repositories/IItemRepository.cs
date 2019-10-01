@@ -12,12 +12,14 @@ namespace BudgetApplication.Interface.Repositories
 
         Item GetItemByName(string name);
 
-        IEnumerable<Item> GetItemsByCategory(Category category);
+        IEnumerable<Item> GetItemsByCategory(int categoryId);
 
         List<Item> GetAllItems();
 
         void EditItem(Item item);
 
         void DeleteItem(Item item);
+
+        int GetItemValueTotalByCategory(int categoryId);
     }
 }

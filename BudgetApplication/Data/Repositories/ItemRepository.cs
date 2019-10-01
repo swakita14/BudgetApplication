@@ -49,9 +49,9 @@ namespace BudgetApplication.Data.Repositories
         /**
          * Get list of items using category (R)
          */
-        public IEnumerable<Item> GetItemsByCategory(Category category)
+        public IEnumerable<Item> GetItemsByCategory(int categoryId)
         {
-            return _context.Items.ToList().Where(x => x.CategoryId == category.CategoryId);
+            return _context.Items.ToList().Where(x => x.CategoryId == categoryId);
         }
 
         /**
@@ -60,6 +60,21 @@ namespace BudgetApplication.Data.Repositories
         public List<Item> GetAllItems()
         {
             return _context.Items.ToList();
+        }
+
+        /**
+         * Get a total amount of value with the certain category id (R)
+         */
+        public int GetItemValueTotalByCategory(int categoryId)
+        {
+            int totalValue = 0;
+
+            foreach (var item in GetItemsByCategory(categoryId))
+            {
+                totalValue += int.Parse(item.Price);
+            }
+
+            return totalValue;
         }
 
         /**
