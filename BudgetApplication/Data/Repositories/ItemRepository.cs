@@ -65,13 +65,13 @@ namespace BudgetApplication.Data.Repositories
         /**
          * Get a total amount of value with the certain category id (R)
          */
-        public int GetItemValueTotalByCategory(int categoryId)
+        public double GetItemValueTotalByCategory(int categoryId)
         {
-            int totalValue = 0;
+            double totalValue = 0;
 
             foreach (var item in GetItemsByCategory(categoryId))
             {
-                totalValue += int.Parse(item.Price);
+                totalValue += Double.Parse(item.Price);
             }
 
             return totalValue;

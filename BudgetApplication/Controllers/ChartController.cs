@@ -6,6 +6,7 @@ using BudgetApplication.Data.Repositories;
 using BudgetApplication.Interface.Repositories;
 using BudgetApplication.Models.JSModel;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace BudgetApplication.Controllers
 {
@@ -25,7 +26,14 @@ namespace BudgetApplication.Controllers
         {
             List<DataPoint> dataPoints = new List<DataPoint>();
 
+            foreach (var category in _categoryRepository.GetAllCategories())
+            {
+                dataPoints.Add(new DataPoint(category.Name, _itemRepository.GetItemValueTotalByCategory(category.CategoryId)));
+            }
 
+            ViewBag.DataPoints = JsonConvert.SerializeObject(dataPoints);
+
+            return View();
         }
 
         public IActionResult Home()

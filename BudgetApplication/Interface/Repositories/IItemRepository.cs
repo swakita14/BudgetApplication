@@ -20,6 +20,6 @@ namespace BudgetApplication.Interface.Repositories
 
         void DeleteItem(Item item);
 
-        int GetItemValueTotalByCategory(int categoryId);
+        double GetItemValueTotalByCategory(int categoryId);
     }
 }
