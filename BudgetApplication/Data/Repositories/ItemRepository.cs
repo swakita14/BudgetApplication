@@ -71,7 +71,7 @@ namespace BudgetApplication.Data.Repositories
 
             foreach (var item in GetItemsByCategory(categoryId))
             {
-                totalValue += Double.Parse(item.Price);
+                totalValue += double.Parse(item.Price);
             }
 
             return totalValue;
