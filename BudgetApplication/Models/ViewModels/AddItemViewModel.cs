@@ -16,6 +16,5 @@ namespace BudgetApplication.Models.ViewModels
 
         public string Category { get; set; }
 
-        public DateTime DatePurchased { get; set; }
     }
 }

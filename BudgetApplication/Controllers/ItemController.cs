@@ -43,7 +43,8 @@ namespace BudgetApplication.Controllers
                 Name = item.Name,
                 Price = item.Price,
                 Category = _categoryRepository.GetCategoryByName(item.Category),
-                CategoryId = _categoryRepository.GetCategoryByName(item.Category).CategoryId
+                CategoryId = _categoryRepository.GetCategoryByName(item.Category).CategoryId,
+                DatePurchased = DateTime.Today
             };
 
             // Adding Item to DB
