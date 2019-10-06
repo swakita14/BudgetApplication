@@ -9,6 +9,7 @@ namespace BudgetApplication.Models.DatabaseModels
         public string Name { get; set; }
         public string Price { get; set; }
         public int CategoryId { get; set; }
+        public DateTime DatePurchased { get; set; }
 
         public virtual Category Category { get; set; }
     }

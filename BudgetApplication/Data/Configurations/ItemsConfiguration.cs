@@ -24,6 +24,9 @@ namespace BudgetApplication.Data.Configurations
                 .IsRequired()
                 .HasMaxLength(32);
 
+            builder.Property(e => e.DatePurchased)
+                .IsRequired();
+
             builder.HasOne(d => d.Category)
                 .WithMany(p => p.Items)
                 .HasForeignKey(d => d.CategoryId)

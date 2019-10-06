@@ -37,9 +37,11 @@ namespace BudgetApplication.Controllers
                 dataPoints.Add(new DataPoint(category.Name, Math.Round(((_itemRepository.GetItemValueTotalByCategory(category.CategoryId) / totalPercent) * 100), MidpointRounding.AwayFromZero)));
             }
 
+            // Return Json Data to View
             ViewBag.DataPoints = JsonConvert.SerializeObject(dataPoints);
 
-            return View();
+            // Returning all items to be sorted out in the view
+            return View(_itemRepository.GetAllItems());
         }
 
         /**
