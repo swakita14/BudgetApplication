@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Permissions;
 using System.Threading.Tasks;
 
 namespace BudgetApplication.Models.ViewModels
@@ -14,5 +15,7 @@ namespace BudgetApplication.Models.ViewModels
         public string Price { get; set; }
 
         public string Category { get; set; }
+
+        public DateTime DatePurchased { get; set; }
     }
 }
