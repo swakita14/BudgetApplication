@@ -6,6 +6,7 @@ using BudgetApplication.Data.Repositories;
 using BudgetApplication.Interface.Repositories;
 using BudgetApplication.Models.DatabaseModels;
 using BudgetApplication.Models.JSModel;
+using BudgetApplication.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -62,15 +63,47 @@ namespace BudgetApplication.Controllers
             return totalPercent;
         }
 
-        public IActionResult Home()
+        public IEnumerable<ItemTableViewModel> GetItemTable()
         {
-            return View();
+            List<ItemTableViewModel> itemList = new List<ItemTableViewModel>();
+
+            foreach (var item in _itemRepository.GetAllItems())
+            {
+                itemList.Add(new ItemTableViewModel
+                {
+                    ItemId = item.ItemId,
+                    ItemName = item.Name,
+                    Price = item.Price,
+                    CategoryName = _categoryRepository.GetCategoryById(item.CategoryId).Name,
+                    PurchasedDate = item.DatePurchased
+                });
+            }
+
+            return itemList;
         }
 
-        public IActionResult Data()
+        /**
+         * Partial View to show a table of the items that were purchased 
+         */
+        public PartialViewResult PurchasedItemTable()
         {
-            return View();
+            List<ItemTableViewModel> itemList = new List<ItemTableViewModel>();
+
+            foreach (var item in _itemRepository.GetAllItems())
+            {
+                itemList.Add(new ItemTableViewModel
+                {
+                    ItemId = item.ItemId,
+                    ItemName = item.Name,
+                    Price = item.Price,
+                    CategoryName = _categoryRepository.GetCategoryById(item.CategoryId).Name,
+                    PurchasedDate = item.DatePurchased
+                });
+            }
+
+            return PartialView("_PurchasedItemTable", itemList);
         }
+
 
     }
 }
