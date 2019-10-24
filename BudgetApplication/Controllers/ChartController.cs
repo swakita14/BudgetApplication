@@ -63,6 +63,9 @@ namespace BudgetApplication.Controllers
             return totalPercent;
         }
 
+        /**
+         * IEnumerable method to return the view model with the items needed for the table
+         */
         public IEnumerable<ItemTableViewModel> GetItemTable()
         {
             List<ItemTableViewModel> itemList = new List<ItemTableViewModel>();
@@ -87,21 +90,7 @@ namespace BudgetApplication.Controllers
          */
         public PartialViewResult PurchasedItemTable()
         {
-            List<ItemTableViewModel> itemList = new List<ItemTableViewModel>();
-
-            foreach (var item in _itemRepository.GetAllItems())
-            {
-                itemList.Add(new ItemTableViewModel
-                {
-                    ItemId = item.ItemId,
-                    ItemName = item.Name,
-                    Price = item.Price,
-                    CategoryName = _categoryRepository.GetCategoryById(item.CategoryId).Name,
-                    PurchasedDate = item.DatePurchased
-                });
-            }
-
-            return PartialView("_PurchasedItemTable", itemList);
+            return PartialView("_PurchasedItemTable", GetItemTable());
         }
 
 
