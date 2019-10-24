@@ -90,6 +90,7 @@ namespace BudgetApplication.Controllers
          */
         public PartialViewResult PurchasedItemTable()
         {
+
             return PartialView("_PurchasedItemTable", GetItemTable());
         }
 
