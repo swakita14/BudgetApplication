@@ -41,8 +41,24 @@ namespace BudgetApplication.Controllers
             // Return Json Data to View
             ViewBag.DataPoints = JsonConvert.SerializeObject(dataPoints);
 
+            // Getting all the items ready for the ViewModel
+            List<ItemTableViewModel> itemList = new List<ItemTableViewModel>();
+
+            foreach (var item in _itemRepository.GetAllItems())
+            {
+                itemList.Add(new ItemTableViewModel
+                {
+                    ItemId = item.ItemId,
+                    ItemName = item.Name,
+                    CategoryName = _categoryRepository.GetCategoryById(item.CategoryId).Name,
+                    Price = item.Price,
+                    PurchasedDate = item.DatePurchased
+                });
+            }
+
             // Returning all items to be sorted out in the view
-            return View(_itemRepository.GetAllItems());
+            return View(itemList.OrderBy(x => x.Price));
+
         }
 
         /**
@@ -63,35 +79,6 @@ namespace BudgetApplication.Controllers
             return totalPercent;
         }
 
-        /**
-         * IEnumerable method to return the view model with the items needed for the table
-         */
-        public IEnumerable<ItemTableViewModel> GetItemTable()
-        {
-            List<ItemTableViewModel> itemList = new List<ItemTableViewModel>();
-
-            foreach (var item in _itemRepository.GetAllItems())
-            {
-                itemList.Add(new ItemTableViewModel
-                {
-                    ItemId = item.ItemId,
-                    ItemName = item.Name,
-                    Price = item.Price,
-                    CategoryName = _categoryRepository.GetCategoryById(item.CategoryId).Name,
-                    PurchasedDate = item.DatePurchased
-                });
-            }
-
-            return itemList;
-        }
-
-        /**
-         * Partial View to show a table of the items that were purchased 
-         */
-        public PartialViewResult PurchasedItemTable()
-        {
-            return PartialView("_PurchasedItemTable", GetItemTable());
-        }
 
 
     }
