@@ -32,7 +32,7 @@ namespace BudgetApplication.Controllers
             // Used to find the total double value for pie chart percentage
             double totalPercent = ReturnTotalPercent(_categoryRepository.GetAllCategories());
 
-            // Getting the category datapoints to the view
+            // Getting the category data points to the view
             foreach (var category in _categoryRepository.GetAllCategories())
             {
                 dataPoints.Add(new DataPoint(category.Name, Math.Round(((_itemRepository.GetItemValueTotalByCategory(category.CategoryId) / totalPercent) * 100), MidpointRounding.AwayFromZero)));
@@ -41,8 +41,23 @@ namespace BudgetApplication.Controllers
             // Return Json Data to View
             ViewBag.DataPoints = JsonConvert.SerializeObject(dataPoints);
 
+            // Getting all the items ready for the ViewModel
+            List<ItemTableViewModel> itemList = new List<ItemTableViewModel>();
+
+            foreach (var item in _itemRepository.GetAllItems())
+            {
+                itemList.Add(new ItemTableViewModel
+                {
+                    ItemId = item.ItemId,
+                    ItemName = item.Name,
+                    CategoryName = _categoryRepository.GetCategoryById(item.CategoryId).Name,
+                    Price = item.Price,
+                    PurchasedDate = item.DatePurchased
+                });
+            }
+
             // Returning all items to be sorted out in the view
-            return View(_itemRepository.GetAllItems());
+            return View(itemList.OrderBy(x => x.Price));
         }
 
         /**
@@ -84,16 +99,6 @@ namespace BudgetApplication.Controllers
 
             return itemList;
         }
-
-        /**
-         * Partial View to show a table of the items that were purchased 
-         */
-        public PartialViewResult PurchasedItemTable()
-        {
-
-            return PartialView("_PurchasedItemTable", GetItemTable());
-        }
-
 
     }
 }
