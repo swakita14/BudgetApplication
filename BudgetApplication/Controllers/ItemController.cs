@@ -41,7 +41,7 @@ namespace BudgetApplication.Controllers
             {
                 ItemId = item.ItemId,
                 Name = item.Name,
-                Price = item.Price,
+                Price = item.Price.ToString(),
                 Category = _categoryRepository.GetCategoryByName(item.Category),
                 CategoryId = _categoryRepository.GetCategoryByName(item.Category).CategoryId,
                 DatePurchased = DateTime.Now
@@ -50,7 +50,7 @@ namespace BudgetApplication.Controllers
             // Adding Item to DB
             _itemRepository.AddItem(newItem);
 
-            return RedirectToAction("AddItem");
+            return RedirectToAction("ChartView", "Chart");
         }
 
         public void CategoryDropDown()

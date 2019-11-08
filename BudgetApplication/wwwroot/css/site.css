@@ -59,3 +59,8 @@ body {
     height: 370px;
     width: 100%;
 }
+
+#new-item-label {
+    text-align: center;
+    font-weight: bold;
+}

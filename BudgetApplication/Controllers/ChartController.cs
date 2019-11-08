@@ -8,6 +8,7 @@ using BudgetApplication.Models.DatabaseModels;
 using BudgetApplication.Models.JSModel;
 using BudgetApplication.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
 
 namespace BudgetApplication.Controllers
@@ -26,6 +27,9 @@ namespace BudgetApplication.Controllers
 
         public IActionResult ChartView()
         {
+            // Adding the dropdown to the view
+            CategoryDropDown();
+
             // Initializing data points list
             List<DataPoint> dataPoints = new List<DataPoint>();
 
@@ -78,5 +82,10 @@ namespace BudgetApplication.Controllers
             return totalPercent;
         }
 
-}
+        public void CategoryDropDown()
+        {
+            ViewBag.Category = new SelectList(_categoryRepository.GetAllCategoryName());
+        }
+
+    }
     }
