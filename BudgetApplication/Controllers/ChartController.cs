@@ -51,7 +51,7 @@ namespace BudgetApplication.Controllers
                     ItemId = item.ItemId,
                     ItemName = item.Name,
                     CategoryName = _categoryRepository.GetCategoryById(item.CategoryId).Name,
-                    Price = item.Price,
+                    Price = decimal.Parse(item.Price),
                     PurchasedDate = item.DatePurchased
                 });
             }
@@ -79,3 +79,4 @@ namespace BudgetApplication.Controllers
         }
 
 }
+    }

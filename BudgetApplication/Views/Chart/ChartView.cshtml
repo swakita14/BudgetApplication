@@ -45,25 +45,29 @@
     </script>
 </head>
 <body>
-<div id="chartContainer"></div>
+    <div id="chartContainer"></div>
     <br />
-    <table class="table table-bordered table-responsive table-hover">
-        <tr>
-            <th>Item Name</th>
-            <th>Category Name</th>
-            <th>Price</th>
-            <th>Purchased Date</th>
-        </tr>
+    <br />
 
-        @foreach (var item in Model)
-        {
+    <table class="ui celled table">
+        <thead>
             <tr>
-                <td>@item.ItemName</td>
-                <td>@item.CategoryName</td>
-                <td>@item.Price</td>
-                <td>@item.PurchasedDate</td>
+                <th>Item Name</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Purchased Date</th>
             </tr>
-        }
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td data-label="item-name">@item.ItemName</td>
+                    <td data-label="category-name">@item.CategoryName</td>
+                    <td data-label="price">$@item.Price</td>
+                    <td data-label="purchased-date">@item.PurchasedDate</td>
+                </tr>
+            }
     </table>
 </body>
 </html>

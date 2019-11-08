@@ -65,7 +65,7 @@ namespace BudgetApplication
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Chart}/{action=Home}/{id?}");
+                    template: "{controller=Chart}/{action=ChartView}/{id?}");
             });
         }
     }
