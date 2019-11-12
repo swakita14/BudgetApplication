@@ -7,22 +7,23 @@
 <html>
 <head>
 
+
     <!-- Donut Chart CDN -->
-    <link rel="stylesheet" href="css/site.css" />
+    <link rel="stylesheet" href="css/site.css"/>
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
     <!-- DataTable CDN -->
     <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-    <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css"/>
 
     <script>
 
-        $( document ).ready(function() {
+        $(document).ready(function() {
             console.log("ready!");
             $('#myTable').DataTable();
         });
 
-        window.onload = function () {
+        window.onload = function() {
 
             var chart = new CanvasJS.Chart("chartContainer",
                 {
