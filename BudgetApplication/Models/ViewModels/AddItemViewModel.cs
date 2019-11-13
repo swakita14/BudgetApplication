@@ -16,5 +16,7 @@ namespace BudgetApplication.Models.ViewModels
 
         public string Category { get; set; }
 
+        public string PurchaseDate { get; set; }
+
     }
 }
