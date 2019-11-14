@@ -1,4 +1,5 @@
 ﻿
+
 <!-- Modal -->
 <div class="modal fade" id="add-item" tabindex="-1" role="dialog" aria-labelledby="add-itemlabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -15,11 +16,11 @@
                 <div class="modal-body">
 
                     <div class="form-group">
-                        @Html.TextBox("Name", "", new { @class = "form-control", @placeholder = "Item Name" })
+                        @Html.TextBox("Name", "", new { @class = "form-control", @placeholder = "Name", @required = "Enter an item name" })
                     </div>
 
                     <div class="form-group">
-                        @Html.TextBox("Price", "", new { @class = "form-control", @placeholder = "Price", @type = "number", @step = ".01" })
+                        @Html.TextBox("Price", "", new { @class = "form-control", @placeholder = "Price", @type = "number", @step = ".01", @required="Enter a price" })
                     </div>
 
                     <div class="form-group">
@@ -27,7 +28,7 @@
                     </div>
 
                     <div class="form-group">
-                        <input type="text" class="form-control" data-toggle="datepicker" name="PurchaseDate" id="PurchaseDate">
+                        <input type="text" class="form-control" data-toggle="datepicker" name="PurchaseDate" id="PurchaseDate" placeholder="Purchase Date" required>
                     </div>
 
                 </div>
