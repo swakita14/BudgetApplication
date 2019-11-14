@@ -80,7 +80,7 @@
                     <td data-label="item-name">@item.ItemName</td>
                     <td data-label="category-name">@item.CategoryName</td>
                     <td data-label="price">$@item.Price</td>
-                    <td data-label="purchased-date">@item.PurchasedDate</td>
+                    <td data-label="purchased-date">@String.Format("{0:MM/dd/yyyy}", item.PurchasedDate)</td>
                 </tr>
             }
     </table>
