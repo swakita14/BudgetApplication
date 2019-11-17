@@ -8,7 +8,7 @@
     <script>
         $(document).ready(function () {
             console.log("ready!");
-            var url = @Url.Action("GetMonthlySpendingByYear");
+            var url = '@Url.Action("GetMonthlySpendingByYear")';
             $.get(url,
                 function(data) {
                     console.log(data);
