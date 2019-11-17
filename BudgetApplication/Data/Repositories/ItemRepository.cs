@@ -105,8 +105,10 @@ namespace BudgetApplication.Data.Repositories
          */
         public List<decimal> GetYearSpendingMonthly()
         {
+            // Initialize decimal list 
             List<decimal> monthlySpending = new List<decimal>();
 
+            // Loop through and add all the totals 
             for(int i = 1; i < 13; i++)
             {
                 monthlySpending.Add(TotalSpendingByMonth(i));

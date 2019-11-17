@@ -3,5 +3,20 @@
     ViewData["Title"] = "SpendingPerMonth";
 }
 
+
+<head>
+    <script>
+        $(document).ready(function () {
+            console.log("ready!");
+            var url = @Url.Action("GetMonthlySpendingByYear");
+            $.get(url,
+                function(data) {
+                    console.log(data);
+                });
+        });
+    </script>
+</head>
+<body>
 <h1>SpendingPerMonth</h1>
+</body>
 

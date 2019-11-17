@@ -29,17 +29,13 @@ namespace BudgetApplication.Controllers
             return View();
         }
 
-//        [HttpGet]
-//        public JsonResult SpendingData()
-//        {
-//            // Assigning the list of monthly totals 
-////            var spendingPerMonth = _itemRepository.GetYearSpendingMonthly();
-////
-////            // Assigning the list of months 
-////            var months = DateTimeFormatInfo.CurrentInfo.MonthNames;
-//
-//
-//        }
+        [HttpGet]
+        public JsonResult GetMonthlySpendingByYear()
+        {
+            return Json(_itemRepository.GetYearSpendingMonthly());
+        }
+
+
 
     }
 }
