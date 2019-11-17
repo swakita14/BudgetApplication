@@ -84,9 +84,13 @@ namespace BudgetApplication.Data.Repositories
          */
         public decimal TotalSpendingByMonth(int month)
         {
+            // Initialize local variable 
             decimal totalSpendingByMonth = 0;
+
+            // Find all the items that have been purchased in that month 
             IEnumerable<Item> items = _context.Items.Where(x => x.DatePurchased.Month == month);
             
+            // Add them all up
             foreach (var item in items)
             {
                 totalSpendingByMonth += decimal.Parse(item.Price);
