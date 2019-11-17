@@ -20,6 +20,8 @@ namespace BudgetApplication.Interface.Repositories
 
         void DeleteItem(Item item);
 
+        decimal TotalSpendingByMonth(int month);
+
         double GetItemValueTotalByCategory(int categoryId);
     }
 }

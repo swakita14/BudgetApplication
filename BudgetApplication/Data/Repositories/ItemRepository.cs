@@ -78,6 +78,22 @@ namespace BudgetApplication.Data.Repositories
         }
 
         /**
+         * Getting the total spending by month (R)
+         */
+        public decimal TotalSpendingByMonth(int month)
+        {
+            decimal totalSpendingByMonth = 0;
+            IEnumerable<Item> items = _context.Items.Where(x => x.DatePurchased.Month == month);
+
+            foreach (var item in items)
+            {
+                totalSpendingByMonth += decimal.Parse(item.Price);
+            }
+
+            return totalSpendingByMonth; 
+
+        }
+        /**
          * Edit Item (U)
          */
         public void EditItem(Item item)
@@ -97,5 +113,7 @@ namespace BudgetApplication.Data.Repositories
             _context.Items.Remove(existingItem);
             _context.SaveChanges();
         }
+
+        
     }
 }

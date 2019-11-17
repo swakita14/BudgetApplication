@@ -22,5 +22,6 @@ namespace BudgetApplication.Controllers
         {
             return View();
         }
+
     }
 }
