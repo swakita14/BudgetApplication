@@ -17,5 +17,10 @@ namespace BudgetApplication.Controllers
             _itemRepository = itemRepository;
             _categoryRepository = categoryRepository;
         }
+
+        public IActionResult SpendingPerMonth()
+        {
+            return View();
+        }
     }
 }
