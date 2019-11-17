@@ -32,7 +32,19 @@ namespace BudgetApplication.Controllers
         [HttpGet]
         public JsonResult GetMonthlySpendingByYear()
         {
-            return Json(_itemRepository.GetYearSpendingMonthly());
+            // Initialized month name list 
+            List<string> monthNameList = new List<string>();
+
+            // Added month individually since there is a blank at index#13
+            for (int i = 0; i < 12; i++)
+            {
+                monthNameList.Add(DateTimeFormatInfo.CurrentInfo.MonthNames[i]);
+            }
+
+            var monthlySpending = _itemRepository.GetYearSpendingMonthly();
+            var monthNames = monthNameList;
+
+            return Json(new {monthNames, monthlySpending});
         }
 
 
