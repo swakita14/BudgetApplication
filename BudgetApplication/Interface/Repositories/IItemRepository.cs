@@ -23,5 +23,7 @@ namespace BudgetApplication.Interface.Repositories
         decimal TotalSpendingByMonth(int month);
 
         double GetItemValueTotalByCategory(int categoryId);
+
+        List<decimal> GetYearSpendingMonthly();
     }
 }

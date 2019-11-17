@@ -4,6 +4,7 @@ using System.Linq;
 using BudgetApplication.Interface.Repositories;
 using BudgetApplication.Models;
 using BudgetApplication.Models.DatabaseModels;
+using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.EntityFrameworkCore;
 
 namespace BudgetApplication.Data.Repositories
@@ -93,6 +94,19 @@ namespace BudgetApplication.Data.Repositories
             return totalSpendingByMonth; 
 
         }
+
+        public List<decimal> GetYearSpendingMonthly()
+        {
+            List<decimal> yearSpendingList = new List<decimal>();
+
+            for (int i = 1; i < 13; i++)
+            {
+                yearSpendingList.Add(TotalSpendingByMonth(i));
+            }
+
+            return yearSpendingList;
+        }
+
         /**
          * Edit Item (U)
          */
