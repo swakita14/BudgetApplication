@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using BudgetApplication.Interface.Repositories;
@@ -20,17 +22,24 @@ namespace BudgetApplication.Controllers
 
         public IActionResult SpendingPerMonth()
         {
-            // Initializing a new list with all the totals of month
-            List<decimal> yearlySpending = new List<decimal>();
 
-            // Adding the total of each month 
-            for (int i = 1; i < 13; i++)
-            {
-                yearlySpending.Add(_itemRepository.TotalSpendingByMonth(i));
-            }
+            string[] names = DateTimeFormatInfo.CurrentInfo.MonthNames;
 
+            Debug.Write(names);
             return View();
         }
+
+//        [HttpGet]
+//        public JsonResult SpendingData()
+//        {
+//            // Assigning the list of monthly totals 
+////            var spendingPerMonth = _itemRepository.GetYearSpendingMonthly();
+////
+////            // Assigning the list of months 
+////            var months = DateTimeFormatInfo.CurrentInfo.MonthNames;
+//
+//
+//        }
 
     }
 }

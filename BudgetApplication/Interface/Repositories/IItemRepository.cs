@@ -24,6 +24,9 @@ namespace BudgetApplication.Interface.Repositories
 
         double GetItemValueTotalByCategory(int categoryId);
 
-        List<decimal> GetYearSpendingMonthly();
+        //List<decimal> GetYearSpendingMonthly();
+
+        Dictionary<string, decimal> MonthlySpendingDictionary();
+
     }
 }

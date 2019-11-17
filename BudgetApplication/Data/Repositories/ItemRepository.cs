@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using BudgetApplication.Interface.Repositories;
 using BudgetApplication.Models;
@@ -95,17 +96,29 @@ namespace BudgetApplication.Data.Repositories
 
         }
 
-        public List<decimal> GetYearSpendingMonthly()
+        /**
+         * Returns the month name and that month's spending 
+         */
+        public Dictionary<string, decimal> MonthlySpendingDictionary(int month)
         {
-            List<decimal> yearSpendingList = new List<decimal>();
-
-            for (int i = 1; i < 13; i++)
+            // If month is 0 return error 
+            if (month == 0)
             {
-                yearSpendingList.Add(TotalSpendingByMonth(i));
+                return null;
             }
 
-            return yearSpendingList;
+            // Gets a one-dimensional array of type Strong containing full names of months 
+            string[] monthNames = DateTimeFormatInfo.CurrentInfo.MonthNames;
+
+            // Initializes a dictionary object 
+            Dictionary<string, decimal> monthlyAnalysis = new Dictionary<string, decimal>()
+            {
+                {monthNames[month-1], TotalSpendingByMonth(month)} 
+            };
+
+            return monthlyAnalysis;
         }
+
 
         /**
          * Edit Item (U)
@@ -128,6 +141,5 @@ namespace BudgetApplication.Data.Repositories
             _context.SaveChanges();
         }
 
-        
     }
 }
