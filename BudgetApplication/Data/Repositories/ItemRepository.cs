@@ -84,7 +84,7 @@ namespace BudgetApplication.Data.Repositories
         {
             decimal totalSpendingByMonth = 0;
             IEnumerable<Item> items = _context.Items.Where(x => x.DatePurchased.Month == month);
-
+            
             foreach (var item in items)
             {
                 totalSpendingByMonth += decimal.Parse(item.Price);

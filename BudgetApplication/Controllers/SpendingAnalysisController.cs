@@ -20,6 +20,15 @@ namespace BudgetApplication.Controllers
 
         public IActionResult SpendingPerMonth()
         {
+            // Initializing a new list with all the totals of month
+            List<decimal> yearlySpending = new List<decimal>();
+
+            // Adding the total of each month 
+            for (int i = 1; i < 13; i++)
+            {
+                yearlySpending.Add(_itemRepository.TotalSpendingByMonth(i));
+            }
+
             return View();
         }
 
