@@ -101,7 +101,22 @@ namespace BudgetApplication.Data.Repositories
         }
 
         /**
-         * Returns the month name and that month's spending 
+         * Gets a list of months spending (R)
+         */
+        public List<decimal> GetYearSpendingMonthly()
+        {
+            List<decimal> monthlySpending = new List<decimal>();
+
+            for(int i = 1; i < 13; i++)
+            {
+                monthlySpending.Add(TotalSpendingByMonth(i));
+            }
+
+            return monthlySpending;
+        }
+
+        /**
+         * Returns the month name and that month's spending (R)
          */
         public Dictionary<string, decimal> MonthlySpendingDictionary(int month)
         {
