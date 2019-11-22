@@ -24,9 +24,18 @@
                         data: {
                             labels: data.monthNames,
                             datasets: [{
-                                label: 'Total Spending By Month (in USD)',
-                                data: data.monthlySpending
+                                label: 'Total Spending By Month (in USD$)',
+                                data: data.monthlySpending,
+                                backgroundColor: [
+                                    'rgba(54, 162, 235, 0.2)'
+                                ],
+                                borderColor: [
+                                    'rgba(54, 162, 235, 1)'
+                                ]
                             }]
+
+                            
+
                         },
                         options: {
                             scales: {
@@ -35,6 +44,7 @@
                                         beginAtZero: true
                                     }
                                 }]
+
                             }
                         }
                     });
