@@ -10,50 +10,38 @@
             console.log("ready!");
         });
 
+
         window.onload = function () {
 
             var url = '@Url.Action("GetMonthlySpendingByYear")';
             $.get(url,
                 function(data) {
-                    drawSpendingpGraph(data.monthNames, data.monthlySpending);
-                });
+                    console.log(data);
 
-            var spendingGraph = document.getElementById('monthlySpending').getContext('2d');
-
-            function drawSpendingpGraph(dt, lb) {
-                new Chart(spendingGraph,
-                    {
+                    var ctx = document.getElementById('myChart');
+                    var myChart = new Chart(ctx, {
                         type: 'line',
                         data: {
-                            labels: lb,
-                            datasets: [
-                                {
-                                    data: dt,
-                                    label: "Dollars",
-                                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                                    borderColor: 'rgba(255, 99, 132, 1)',
-                                    fill: false
-                                }
-                            ]
+                            labels: data.monthNames,
+                            datasets: [{
+                                label: 'Total Spending By Month (in USD)',
+                                data: data.monthlySpending
+                            }]
                         },
                         options: {
-                            title: {
-                                display: true,
-                                text: "Total Monthly Spending"
-                            },
                             scales: {
-                                yAxes: [
-                                    {
-                                        ticks: {
-                                            max: 1000,
-                                            min: 0
-                                        }
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true
                                     }
-                                ]
+                                }]
                             }
                         }
                     });
-            }
+                });
+
+            
+
         }
 
     </script>
@@ -63,7 +51,7 @@
     <h1>SpendingPerMonth</h1>
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <canvas id="monthlySpending" width="400" height="400"></canvas>
+            <canvas id="myChart" width="400" height="400"></canvas>
         </div>
     </div>
 </body>
