@@ -1,21 +1,70 @@
 ﻿@using Microsoft.AspNetCore.Identity.UI.V3.Pages.Internal
 
 @{
-    ViewData["Title"] = "SpendingPerMonth";
+    ViewData["Title"] = "Monthly Spending";
 }
-
-
-<head>
+@section Scripts{
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
-    @section s
-    {
-        <script src="js/s.js"></script>
-    }
+    <script>
+        $(document).ready(function () {
+            console.log("ready!");
+        });
 
-</head>
+
+        window.onload = function () {
+
+            var url = '@Url.Action("GetMonthlySpendingByYear")';
+            $.get(url,
+                function (data) {
+                    console.log(data);
+
+                    var ctx = document.getElementById('myChart');
+                    var myChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: data.monthNames,
+                            datasets: [{
+                                label: 'Total Spending By Month (in USD$)',
+                                data: data.monthlySpending,
+                                backgroundColor: [
+                                    'rgba(54, 162, 235, 0.2)'
+                                ],
+                                borderColor: [
+                                    'rgba(54, 162, 235, 1)'
+                                ]
+                            }]
+
+
+
+                        },
+                        options: {
+                            title: {
+                                display: true,
+                                text: 'Spending Analysis (Monthly Total)',
+                                fontSize: 22
+                            },
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true
+                                    }
+                                }]
+
+                            }
+                        }
+                    });
+                });
+
+
+
+        };
+    </script>
+}
+<br/>
+<br/>
+
 <body>
-    <h1>SpendingPerMonth</h1>
-    <div class="row justify-content-center">
+<div class="row justify-content-center">
         <div class="col-md-8">
             <canvas id="myChart" width="400" height="400"></canvas>
         </div>
